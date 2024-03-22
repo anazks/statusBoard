@@ -53,6 +53,6 @@ router.get('/like/:id', checkUser, addLike)
 router.post('/search', checkUser, searchProduct)
 router.post('/updateStatus',checkUser,statusUpdate)
 
-router.get('/getNewsData',checkUser,getNewsData)
+router.get('/getNewsData',getNewsData)
 module.exports = router;
 
