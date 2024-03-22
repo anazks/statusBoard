@@ -325,7 +325,7 @@ const getNewsData = async (req, res) => {
 }
 const getUsers = async (req,res)=>{
         try {
-            let users = userModel.find({})
+            let users =await userModel.find({})
             res.json(users)
         } catch (error) {
             console.log(error)
