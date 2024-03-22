@@ -7,7 +7,7 @@ const hbs = require('hbs');
 const fileUpload = require('express-fileupload')
 const session = require('express-session')
 const connectDB = require("./config/config")
-
+const cors = require('cors')
 var adminRouter = require('./routes/admin');
 var usersRouter = require('./routes/users');
 var sellerRouter = require('./routes/seller');
@@ -61,6 +61,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(fileUpload());
+app.use(cors())
 
 app.use('/', adminRouter);
 app.use('/users', usersRouter);
