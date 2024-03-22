@@ -314,14 +314,16 @@ const newsUpdate = async (req,res)=>{
             console.log(error)
         }
 }
-const getNewsData = async(req,res)=>{
+const getNewsData = async (req, res) => {
     try {
         let news = await newsModel.find({});
-                res.json(news)
+        res.json(news);
     } catch (error) {
-        console.log(error)
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ error: 'Internal Server Error' }); // Send an error response
     }
 }
+
 module.exports = {
     getUserHomePage,
     getUserLoginPage,
