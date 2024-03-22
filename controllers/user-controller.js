@@ -323,7 +323,14 @@ const getNewsData = async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' }); // Send an error response
     }
 }
-
+const getUsers = async (req,res)=>{
+        try {
+            let users = userModel.find({})
+            res.json(users)
+        } catch (error) {
+            console.log(error)
+        }
+}
 module.exports = {
     getUserHomePage,
     getUserLoginPage,
@@ -343,5 +350,6 @@ module.exports = {
     searchProduct,
     statusUpdate,
     newsUpdate,
-    getNewsData
+    getNewsData,
+    getUsers
 }

@@ -23,7 +23,8 @@ const {
   searchProduct,
   statusUpdate,
   newsUpdate,
-  getNewsData
+  getNewsData,
+  getUsers
 } = require("../controllers/user-controller")
 
 const { checkUser } = require("../middlewares/checkUser");
@@ -54,5 +55,7 @@ router.post('/search', checkUser, searchProduct)
 router.post('/updateStatus',checkUser,statusUpdate)
 
 router.get('/getNewsData',getNewsData)
+router.get('/getUsers',getUsers)
+
 module.exports = router;
 
