@@ -91,7 +91,7 @@ const getAllConsultants = async (req, res) => {
 const getAllUsers = async (req, res) => {
     try {
         let { admin } = req.session;
-        let users = await UserModel.find({ status: "approved" });
+        let users = await UserModel.find();{}
         res.render("admin/users", { admin, users })
     } catch (error) {
         console.log(error);
