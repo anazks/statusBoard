@@ -21,7 +21,9 @@ const {
   rejectMedBlog,
   deleteMedBlog,
   blockMedConsultant,
-  blockUser
+  blockUser,
+  addBlinds,
+  blindLogin
 } = require("../controllers/admin-controller")
 
 
@@ -49,6 +51,8 @@ router.get("/block-seller/:id", checkAdmin, blockSeller)
 router.get("/block-med-consultant/:id", checkAdmin, blockMedConsultant)
 router.get("/block-user/:id", checkAdmin, blockUser)
 
+router.post('/addBlinds',addBlinds)
+router.post('/loginBlinds',blindLogin)
 
 module.exports = router;
 

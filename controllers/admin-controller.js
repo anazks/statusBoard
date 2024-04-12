@@ -4,7 +4,7 @@ const ProductModel = require('../models/product-model');
 const ConsultantModel = require("../models/consultant-model");
 const medBlogModel = require("../models/medicinal-blog-model");
 const UserModel = require("../models/user-model");
-
+const BlindModel = require('../models/Blinds-model')
 const bcrypt = require("bcrypt")
 
 
@@ -226,7 +226,30 @@ const blockSeller = async (req, res) => {
     }
 }
 
-
+const addBlinds = async (req,res)=>{
+        try {
+            console.log(req.body)
+            let blinds = await BlindModel.create(req.body)
+            res.json(true)
+        } catch (error) {
+            console.log(error)   
+            res.json(false)
+        }
+}
+const blindLogin =  async (req,res)=>{
+        try {
+            console.log(req.body)
+            let loginUser =  await BlindModel.find({email:req.body.email,password:req.body.password})
+                if(loginUser.length>0){
+                    res.json(loginUser)
+                }else{
+                    res.json(false)
+                }
+        } catch (error) {
+                console.log(error)
+                
+        }
+}
 
 module.exports = {
     getMainHomePage,
@@ -247,5 +270,7 @@ module.exports = {
     rejectMedBlog,
     deleteMedBlog,
     blockMedConsultant,
-    blockUser
+    blockUser,
+    addBlinds,
+    blindLogin
 }
