@@ -23,7 +23,8 @@ const {
   blockMedConsultant,
   blockUser,
   addBlinds,
-  blindLogin
+  blindLogin,
+  emailAlert
 } = require("../controllers/admin-controller")
 
 
@@ -53,6 +54,6 @@ router.get("/block-user/:id", checkAdmin, blockUser)
 
 router.post('/addBlinds',addBlinds)
 router.post('/loginBlinds',blindLogin)
-
+router.post('/emailAlert',emailAlert)
 module.exports = router;
 

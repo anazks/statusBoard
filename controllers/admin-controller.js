@@ -6,6 +6,7 @@ const medBlogModel = require("../models/medicinal-blog-model");
 const UserModel = require("../models/user-model");
 const BlindModel = require('../models/Blinds-model')
 const bcrypt = require("bcrypt")
+let nodemailer = require('nodemailer');
 
 
 
@@ -250,6 +251,47 @@ const blindLogin =  async (req,res)=>{
                 
         }
 }
+const emailAlert = async(req,res)=>{
+        try {
+           console.log(req.body,"data from react")
+           const {email} = req.body; 
+           let transporter = nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+              user:'ecommercetest246@gmail.com',
+              pass:'iftgqrcgrduigxuk'
+            },
+            tls:{
+              rejectUnauthorized:false,
+            },
+          })
+          let mailOption  = {
+            from:"Flood monitoring Team",
+            to:email,
+            subject:"Alert",
+            text:`Dear Residents,
+
+            Please be advised that the flood level in your area is rising. Your safety is our utmost priority. Take immediate precautions and stay tuned for further updates.
+            
+            Action Steps:
+            
+            Stay Indoors: Avoid venturing outside unless absolutely necessary.
+            Secure Valuables: Move important documents, electronics, and valuables to higher ground if possible.
+            Stay Informed: Monitor local news and weather updates for the latest information.
+            Emergency Contacts: Have emergency contact numbers handy in case of evacuation.
+            We are closely monitoring the situation and will provide updates as necessary. Stay safe!`,
+          };
+          transporter.sendMail(mailOption,function(err,info){
+            if(err){
+              console.log(err)
+            }else{
+              console.log("emailsent Succecfully")
+            }
+          })
+        } catch (error) {
+            console.log(error)   
+        }
+}
 
 module.exports = {
     getMainHomePage,
@@ -272,5 +314,6 @@ module.exports = {
     blockMedConsultant,
     blockUser,
     addBlinds,
-    blindLogin
+    blindLogin,
+    emailAlert
 }

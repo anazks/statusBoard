@@ -19,7 +19,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^6.3.5",
     "morgan": "~1.9.1",
-    "nodemailer": "^6.7.2",
+    "nodemailer": "^6.9.13",
     "nodemon": "^3.0.2"
   },
   "author": "akash",
